@@ -1,5 +1,5 @@
 import reflex as rx 
-
+from .add_file_form import add_file_form
 
 def container_files():
     return rx.box(
@@ -9,6 +9,7 @@ def container_files():
                 rx.heading('Files and Folder',size="3",weight="medium",color_schema="gray"),
                 align_items="center"),
             rx.divider(),
+            add_file_form(),
             width="100%"
 
         ),
