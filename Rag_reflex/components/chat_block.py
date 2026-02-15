@@ -20,7 +20,8 @@ def chat_block(response,Question):
         rx.flex(
             rx.box(
                 Question,
-                bg="lightblue",
+                bg=rx.color_mode_cond(light="#BBE0EF",dark="#0992C2"),
+                variant="soft",
                 border_radius="6px",
                 padding="0.5em",
                 margin="1em",

@@ -22,5 +22,5 @@ def chat_field():
             border_radius="8px",
             width="100%",
             padding="0.5em",
-            margin_top="460px",
+            margin_top="1px"
     )
