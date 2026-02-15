@@ -1,14 +1,26 @@
 import reflex as rx 
-
+from .send_Q_button import send_Question_button
 
 def chat_field():
     return rx.box(
-        rx.input(placeholder='select a file and ask ur question ....',height="80px",align_items="start",padding="0.5"),
-        height="50px",
-        border_radius="8px",
-        width="90%",
-        padding="1em",
-        align="end"
+                rx.stack(
+                rx.text_area(placeholder='select a file and ask ur question ....',align_items="start",padding="1em",width="120%"),
+                rx.box(
+                    send_Question_button(),
+                    display="flex",
+                    align_items="center",
+                    justify_content="center",
+                    width="10%",
 
-    
+                    ),
+                    display="flex",
+                    align_items="center",
+                    height="50px",
+                    width="100%"
+                    ),
+            height="50px",
+            border_radius="8px",
+            width="100%",
+            padding="0.5em",
+            margin_top="460px",
     )

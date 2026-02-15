@@ -1,5 +1,4 @@
 import reflex as rx 
-from Rag_reflex.components.add_file_button import add_file
 import random
 
 
@@ -14,7 +13,6 @@ def container_domain():
                     spacing="1",
                     align_items="center"
             ),
-            add_file(),
             justify="between",
             width="100%"
             ),

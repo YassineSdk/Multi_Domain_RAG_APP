@@ -14,7 +14,12 @@ def container_chat():
                 align_items="center"
             ),
             rx.divider(),
+            rx.auto_scroll(
             chat_block("hello how can i help you","what is the name of the financial state"),
+            chat_block("yes im happy to explain the financial repport","what is the name of the financial state by the same time explain to me how to elaborate a new field "),
+
+            width="100%",
+            ),
             chat_field(),
             width="100%"
 
