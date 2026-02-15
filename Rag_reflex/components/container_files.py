@@ -1,5 +1,7 @@
 import reflex as rx 
 from .add_file_form import add_file_form
+from .card_grid import file_card
+from Rag_reflex.states.FileState import FileState
 
 def container_files():
     return rx.box(
@@ -10,19 +12,32 @@ def container_files():
                 align_items="center"),
             rx.divider(),
             add_file_form(),
+            rx.flex(
+                rx.foreach(
+                    FileState.files,
+                    lambda file: file_card(
+                        file['title'],
+                        file["details"],
+                    ),
+                ),
+                flex_wrap="wrap",
+                spacing="2",
+                width="100%"
+            ),
+            
+
             width="100%"
 
         ),
-
 
         border_radius="12px",
         background_color=rx.color_mode_cond(
         light="#F1F3F4",
         dark="#1E1E1E",
     ),
-        padding="2em",
+        padding="1em",
         height="800px",
         margin="4px",
-        width="30%",
+        width="35%",
         display="flex"
     )

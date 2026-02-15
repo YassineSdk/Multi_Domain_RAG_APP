@@ -1,38 +1,47 @@
-import reflex as rx 
-import random 
-import random 
+import reflex as rx
 
-
-
-
-def domain_card(icon_url):
+def file_card(title, details):
     return rx.card(
-        rx.link(
-            rx.flex(
-                rx.avatar(src=icon_url),
-                rx.box(
-                rx.heading('Audit Repports',size="1"),
-                rx.text('Audit report related to the mission',size="1",color=rx.color_mode_cond(dark="white",light="black"))                
+        rx.hstack(
+            # ── Box 1 : Icon ──────────────────────────────
+            rx.box(
+                rx.icon("file-text", size=30, color="#3B6EE8"),
+                width="20%",
+                height="100%",          
+                display="flex",
+                align_items="center",
+                justify_content="center",
             ),
-            spacing="2"
+
+            # ── Box 2 : Text (variable height content) ────
+            rx.box(
+                rx.heading(title, size="1"),
+                rx.text(details, size="1"),
+                width="60%",
+                height="100%",          # stretch to full card height
+                display="flex",
+                flex_direction="column",
+                justify_content="center",  # centers text block vs THIS box
+                align_items="flex_start",
+                overflow="hidden",
             ),
 
-        )
+            # ── Box 3 : Checkbox ──────────────────────────
+            rx.box(
+                rx.checkbox(),
+                width="20%",
+                height="100%",          # stretch to full card height
+                display="flex",
+                align_items="center",   # centers checkbox vs THIS box only
+                justify_content="center",
+            ),
 
-    )
-
-
-def card_grid():
-    avatar_icon = ["/stamp.png","/accounting.png","/logistics.png","/finance"]
-    return rx.grid(
-        rx.foreach(
-            rx.Var.range(12),
-             lambda i: domain_card(random.choice(avatar_icon))
-            
+            width="100%",
+            height="100%",   # hstack fills the card
+            align_items="stretch",  # makes all 3 boxes stretch to same height
+            spacing="0",
         ),
-        columns="2",
-        rows="4",
-        spacing="4",
-        width="100%",
-        direction=["column", "column", "row"]
+        width="49%",
+        height="70px",
+        padding="0",
     )
