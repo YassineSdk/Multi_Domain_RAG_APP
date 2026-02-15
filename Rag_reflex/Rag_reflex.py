@@ -16,14 +16,14 @@ def index() -> rx.Component:
             main_view(),
             width="100%"
 
-     ),
+    ),
         width="100%"
-        
+
     )
 
 
 app = rx.App(
-     style={
+    style={
         "font_family": "DM Sans, sans-serif",
     }
 )

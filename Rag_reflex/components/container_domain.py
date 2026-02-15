@@ -9,7 +9,7 @@ def container_domain():
                 rx.hstack( 
                     rx.hstack(
                         rx.icon('book-open-text',size=20 , color= rx.color_mode_cond(light="#3B6EE8",dark="#0ABFBC")),
-                        rx.heading('Domain Library',size="3",weight="medium",color_schema="gray"),
+                        rx.heading('Conversation resume',size="3",weight="medium",color_schema="gray"),
                 
                     spacing="1",
                     align_items="center"

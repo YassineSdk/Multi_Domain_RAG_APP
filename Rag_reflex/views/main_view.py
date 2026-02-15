@@ -5,9 +5,9 @@ from Rag_reflex.components.container_chat import container_chat
 
 def main_view():
     return   rx.hstack(
-            container_files(),
-            container_chat(),
-            container_domain(),
+        container_domain(),
+        container_chat(),
+        container_files(),
         width="100%",
         padding="1em"
         )

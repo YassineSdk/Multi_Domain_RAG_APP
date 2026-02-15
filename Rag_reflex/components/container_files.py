@@ -2,6 +2,7 @@ import reflex as rx
 from .add_file_form import add_file_form
 from .card_grid import file_card
 from Rag_reflex.states.FileState import FileState
+from .delete_file_dialog import delete_file_dialog
 
 def container_files():
     return rx.box(
@@ -11,7 +12,15 @@ def container_files():
                 rx.heading('Files and Folder',size="3",weight="medium",color_schema="gray"),
                 align_items="center"),
             rx.divider(),
-            add_file_form(),
+            #-- files Operation functions
+            rx.stack(
+                add_file_form(),
+                delete_file_dialog(),
+                spacing="3"
+
+
+
+            ),
             rx.flex(
                 rx.foreach(
                     FileState.files,

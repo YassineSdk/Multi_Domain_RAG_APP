@@ -1,5 +1,5 @@
 import reflex as rx
-
+from Rag_reflex.states.FileState import FileState 
 def file_card(title, details):
     return rx.card(
         rx.hstack(
@@ -28,7 +28,10 @@ def file_card(title, details):
 
             # ── Box 3 : Checkbox ──────────────────────────
             rx.box(
-                rx.checkbox(),
+                rx.checkbox(
+                    checked=FileState.checked_files.contains(title),
+                    on_change= lambda value: FileState.handle_check(title,value),
+                ),
                 width="20%",
                 height="100%",          # stretch to full card height
                 display="flex",

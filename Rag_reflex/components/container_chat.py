@@ -1,4 +1,6 @@
 import reflex as rx 
+from .chat_block import chat_block
+from .chat_field import chat_field
 
 
 def container_chat():
@@ -12,6 +14,8 @@ def container_chat():
                 align_items="center"
             ),
             rx.divider(),
+            chat_block("hello how can i help you","what is the name of the financial state"),
+            chat_field(),
             width="100%"
 
         ),
