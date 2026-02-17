@@ -12,6 +12,8 @@ def llm_response(question):
     messages=[
         {"role": "assistant", "content": question}
     ],
-    extra_body={"reasoning": {"enabled": True}}  # enables step-by-step reasoning
+    extra_body={"reasoning": {"enabled": True}}
     )
     return response.choices[0].message
+
+
