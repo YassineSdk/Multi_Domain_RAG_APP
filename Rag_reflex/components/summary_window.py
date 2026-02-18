@@ -6,11 +6,10 @@ def summary_window(repport, date, content=None):
             rx.icon(tag="eye", size=20, color=rx.color_mode_cond(light="#3B6EE8", dark="#0ABFBC"), cursor="pointer"),
         ),
         rx.dialog.content(
-            # Header — all in one line
             rx.hstack(
                 rx.icon("clipboard-clock", size=22, color=rx.color_mode_cond(light="#3B6EE8", dark="#0ABFBC")),
                 rx.heading(repport, size="4", weight="medium"),
-                rx.dialog.title(""),  # 👈 hidden but required by radix
+                rx.dialog.title(""),
                 rx.spacer(),
                 rx.badge(date, variant="soft", color_scheme="cyan"),
                 align_items="center",
@@ -24,11 +23,10 @@ def summary_window(repport, date, content=None):
                 rx.text(content, size="2", white_space="pre-wrap",margin_top="5px"),
                 type="always",
                 scrollbars="vertical",
-                style={"height": "280px"},
+                style={"height": "290px"},
             ),
 
 
-            # Footer buttons
             rx.hstack(
                 rx.button(
                     rx.icon("download", size=16),
@@ -47,10 +45,10 @@ def summary_window(repport, date, content=None):
             ),
 
             style={
-                "max_width": "580px",
-                "width": "95%",
+                "width": "600px",
+                "width": "100%",
                 "padding": "1.8em",
-                "max_height":"500px",
+                "max_height":"800px",
                 "margin_bottom":"2px"
             },
         ),
