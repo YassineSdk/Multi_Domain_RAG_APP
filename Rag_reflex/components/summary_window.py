@@ -1,6 +1,5 @@
 import reflex as rx 
 
-
 def summary_window(repport, date, content=None):
     return rx.dialog.root(
         rx.dialog.trigger(
@@ -20,7 +19,7 @@ def summary_window(repport, date, content=None):
                 margin_bottom="5px"
             ),
             rx.divider(),
-            
+
             rx.scroll_area(
                 rx.text(content, size="2", white_space="pre-wrap",margin_top="5px"),
                 type="always",
