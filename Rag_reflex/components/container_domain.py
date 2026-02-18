@@ -1,8 +1,14 @@
 import reflex as rx 
 import random
-
+from .summary_card import summary_card
+from Rag_reflex.utils.text import text
 
 def container_domain():
+    summary_list = [{"title":"Financial efficiency", "date":"02/01/05","content":text()},
+    {"title":"Customer policy", "date":"02/02/05","content":text()},
+    {"title":"ratio analysis", "date":"02/03/05","content":text()}
+    ]
+
     return rx.box(
         rx.vstack(
                 rx.hstack( 
@@ -17,6 +23,13 @@ def container_domain():
             width="100%"
             ),
             rx.divider(),
+            rx.auto_scroll(
+                rx.foreach(
+                    summary_list,
+                    lambda file: summary_card(file["title"] ,file["date"],file["content"])
+                ),
+                width="100%",
+                spacing="3"),
             width="100%"
         ),
         border_radius="12px",
