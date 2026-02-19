@@ -1,11 +1,13 @@
 import reflex as rx 
 from .send_Q_button import send_Question_button
-#from Rag_reflex.states.ChatState import ChatState
+from Rag_reflex.states.RAGState import RAGState
 
 def chat_field():
     return rx.box(
                 rx.stack(
-                rx.text_area(placeholder='select a file and ask ur question ....',align_items="start",padding="1em",width="100%",height="100px"),
+                rx.text_area(placeholder='select a file and ask ur question ....',align_items="start",padding="1em",width="100%",height="100px",
+                value=RAGState.question,
+                on_change=RAGState.set_question),
                 rx.box(
                     send_Question_button(),
                     display="flex",
@@ -19,9 +21,8 @@ def chat_field():
                     height="50px",
                     width="100%"
                     ),
-            height="100px",
             border_radius="8px",
             width="100%",
             padding="0.1em",
-            margin_top="28px"
+            margin_top="10%"
     )

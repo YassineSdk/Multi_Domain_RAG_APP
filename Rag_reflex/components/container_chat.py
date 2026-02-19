@@ -1,7 +1,7 @@
 import reflex as rx 
 from .chat_block import chat_block
 from .chat_field import chat_field
-#from Rag_reflex.states.ChatState import ChatState
+from Rag_reflex.states.RAGState import RAGState
 
 
 def container_chat():
@@ -16,19 +16,26 @@ def container_chat():
             rx.divider(),
             rx.box(
             rx.auto_scroll(
-            chat_block("testttt","test"),
+                rx.foreach(
+                RAGState.current_pairs,
+            lambda pair: chat_block(pair["answer"],pair["question"])),
             width="800px",
-            height="550px",
+            height="500px",
             overflow="auto",
             margin='1em'
             )),
-            chat_field(),
+
+            rx.cond(
+                RAGState.is_loading,
+                    rx.box(
+                    rx.image(src="loading.gif",width="200px",height="200px"),
+                    width="100%",display="reflex",align_items="center",justify_content="center"),
+                    chat_field()
+
+            ),
             width="100%"
 
         ),
-
-
-
 
         border_radius="12px",
         background_color=rx.color_mode_cond(

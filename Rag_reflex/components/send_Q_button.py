@@ -1,5 +1,5 @@
 import reflex as rx 
-#from Rag_reflex.states.ChatState import ChatState
+from Rag_reflex.states.RAGState import RAGState
 
 
 
@@ -8,5 +8,5 @@ def send_Question_button():
     rx.icon("send-horizontal"),
     variant="ghost",  
     border_radius="25%",
-    # on_click= ChatState.get_question
+    on_click= RAGState.handle_question
 )
