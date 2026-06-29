@@ -17,7 +17,7 @@ def container_chat():
             rx.auto_scroll(
                 rx.foreach(
                 RAGState.current_pairs,
-            lambda pair: chat_block(pair["answer"],pair["question"])),
+            lambda pair: chat_block(pair["answer"],pair["question"],pair)),
             width="850px",
             height="600px",
             overflow="auto",

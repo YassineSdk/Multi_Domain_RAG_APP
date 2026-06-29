@@ -3,7 +3,8 @@ from Rag_reflex.model.Conversation_Model import Conversation, QAPair
 from sqlmodel import select 
 from Rag_reflex.utils.llm_respond import llm_response
 from Rag_reflex.utils.conversation_manager import get_create_conversation,save_QAPair 
-from Rag_reflex.states.QAPairItem import QAPairItem 
+from Rag_reflex.states.QAPairItem import QAPairItem
+from Rag_reflex.model.Collection import Collection
 import asyncio
 
 class RAGState(rx.State):
@@ -11,6 +12,10 @@ class RAGState(rx.State):
     answer: str = ""
     current_pairs: list[QAPairItem] = []
     is_loading :bool = False 
+
+    selected_qa_id: int = -1       
+    save_title: str = ""           
+    show_save_dialog: bool = False 
 
     async def handle_question(self):
             """
@@ -57,7 +62,7 @@ class RAGState(rx.State):
             ).all()
 
             self.current_pairs = [
-            QAPairItem(question=p.question, answer=p.answer)
+            QAPairItem(id=p.id,question=p.question, answer=p.answer)
             for p in pairs ]
 
     async def load_on_start(self):
@@ -66,4 +71,26 @@ class RAGState(rx.State):
         is restored if the user refreshes the page.
         """
         await self._load_current_pairs()
+
+    def select_qa(self, qa_id:int):
+        """Captures the selected QA"""
+        self.selected_qa_id = qa_id 
+        self.save_title = ""
+
+    def set_title(self, title : str):
+        self.save_title = title 
+    
+    def confirm_save(self):
+        if not self.save_title.strip() or self.selected_qa_id == -1 :
+            return 
+        with rx.session() as session:
+            session.add(Collection(
+                qa_pair_id=self.selected_qa_id,
+                title=self.save_title
+            ))
+            session.commit()
+        self.save_title = "" 
+        self.selected_qa_id = -1
+
+
 

@@ -2,7 +2,7 @@ import reflex as rx
 from Rag_reflex.states.RAGState import RAGState
 from .conv_menu import conv_menu
 
-def chat_block(response,Question):
+def chat_block(response,Question,pair):
     return rx.flex(
             rx.flex(
             rx.box(
@@ -31,7 +31,7 @@ def chat_block(response,Question):
                 width="100%",
             ),
             width="85%",),
-            rx.box(conv_menu(),align_self="baseline",width="5%"),
+            rx.box(conv_menu(pair),align_self="baseline",width="5%"),
             align="baseline",
             width="100%",
             display="flex"
